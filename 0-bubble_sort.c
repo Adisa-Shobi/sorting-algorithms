@@ -8,13 +8,12 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	bool swapped = true;
 	int temp;
-	unsigned int i, n = size;
+	unsigned int i, n = size, newn = size;
 
-	while (swapped)
+	while (newn > 1)
 	{
-		swapped = false;
+		newn = 0;
 		for (i = 1; i < n; i++)
 		{
 			if (array[i - 1] > array[i])
@@ -22,10 +21,10 @@ void bubble_sort(int *array, size_t size)
 				temp = array[i];
 				array[i] = array[i - 1];
 				array[i - 1] = temp;
-				swapped = true;
 				print_array(array, size);
+				newn = i;
 			}
 		}
-		n--;
+		n = newn;
 	}
 }
