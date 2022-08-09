@@ -35,29 +35,7 @@ void insertion_sort_list(listint_t **list)
 			}
 			print_list(*list);
 		}
-/**		if (curr != pointer->next)
- *		{
- *			eject_node(curr);
- *			if (curr->n > pointer->n)
- *			{
- *				if (pointer->next)
- *					pointer->next->prev = curr;
- *				curr->next = pointer->next;
- *				curr->prev = pointer;
- *				pointer->next = curr;
- *				print_list(*list);
- *			}
- *			else
- *			{
- *				*list = curr;
- *				curr->next = pointer;
- *				curr->prev = pointer->prev;
- *				pointer->prev = curr;
- *				print_list(*list);
- *			}
- * 		}
- */
- 		head = head->next;
+		head = head->next;
 	}
 }
 
