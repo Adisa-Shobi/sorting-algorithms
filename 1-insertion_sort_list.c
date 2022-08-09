@@ -21,32 +21,43 @@ void insertion_sort_list(listint_t **list)
 		pointer = head->prev;
 		while (curr->n < pointer->n)
 		{
-			if (!pointer->prev)
-				break;
-			pointer = pointer->prev;
-		}
-		if (curr != pointer->next)
-		{
 			eject_node(curr);
-			if (curr->n > pointer->n)
-			{
-				if (pointer->next)
-					pointer->next->prev = curr;
-				curr->next = pointer->next;
-				curr->prev = pointer;
-				pointer->next = curr;
-				print_list(*list);
-			}
-			else
+			if (pointer->prev)
+				pointer->prev->next = curr;
+			curr->prev = pointer->prev;
+			pointer->prev = curr;
+			curr->next = pointer;
+			pointer = curr->prev;
+			if (!pointer)
 			{
 				*list = curr;
-				curr->next = pointer;
-				curr->prev = pointer->prev;
-				pointer->prev = curr;
-				print_list(*list);
+				break;
 			}
+			print_list(*list);
 		}
-		head = head->next;
+/**		if (curr != pointer->next)
+ *		{
+ *			eject_node(curr);
+ *			if (curr->n > pointer->n)
+ *			{
+ *				if (pointer->next)
+ *					pointer->next->prev = curr;
+ *				curr->next = pointer->next;
+ *				curr->prev = pointer;
+ *				pointer->next = curr;
+ *				print_list(*list);
+ *			}
+ *			else
+ *			{
+ *				*list = curr;
+ *				curr->next = pointer;
+ *				curr->prev = pointer->prev;
+ *				pointer->prev = curr;
+ *				print_list(*list);
+ *			}
+ * 		}
+ */
+ 		head = head->next;
 	}
 }
 
