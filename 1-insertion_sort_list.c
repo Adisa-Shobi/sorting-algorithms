@@ -11,7 +11,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *pointer, *curr, *head;
 
-	if (!(*list))
+	if (!(*list) || !(*list)->next)
 		return;
 
 	head = (*list)->next;
@@ -31,6 +31,7 @@ void insertion_sort_list(listint_t **list)
 			if (!pointer)
 			{
 				*list = curr;
+				print_list(*list);
 				break;
 			}
 			print_list(*list);
