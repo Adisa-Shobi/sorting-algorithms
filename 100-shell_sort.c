@@ -10,14 +10,12 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t n = 0, j, k;
-	int i, temp;
+	size_t n = 1, j, k, i;
+	int temp;
 
-	for (i = 0; n < size; i++)
-		n = i * 3 + 1;
-	i = ((n - 1) / 3) - 2;
+	i = max_gap(size);
 
-	while (i >= 0)
+	while (i)
 	{
 		n = i * 3 + 1;
 		for (j = n; j < size; j++)
@@ -28,6 +26,21 @@ void shell_sort(int *array, size_t size)
 			array[k] = temp;
 		}
 		print_array(array, size);
-		i--;
+		i = (i - 1) / 3;
 	}
+}
+
+/**
+ *max_gap - gets the max range number
+ *
+ *@size: The size of the array being sorted
+ *Return: the max integer
+ */
+size_t max_gap(size_t size)
+{
+	size_t gap = 1;
+
+	while (gap < size)
+		gap = gap * 3 + 1;
+	return ((gap - 1) / 3);
 }

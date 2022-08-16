@@ -28,5 +28,6 @@ void quickSort(int *array, size_t size, int lo, int hi);
 int partition(int *array, size_t size, int lo, int hi);
 void swap(int *array, size_t size, int i, int j);
 void shell_sort(int *array, size_t size);
+size_t max_gap(size_t size);
 
 #endif /* SORT_H */
