@@ -10,19 +10,21 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	size_t n = 1, j, k, i;
+	size_t j, k, i;
 	int temp;
+
+	if (!array || !size || !*array)
+		return;
 
 	i = max_gap(size);
 
 	while (i)
 	{
-		n = i * 3 + 1;
-		for (j = n; j < size; j++)
+		for (j = i; j < size; j++)
 		{
 			temp = array[j];
-			for (k = j; (k >= n) && (array[k - n] > temp); k -= n)
-				array[k] = array[k - n];
+			for (k = j; (k >= i) && (array[k - i] > temp); k -= i)
+				array[k] = array[k - i];
 			array[k] = temp;
 		}
 		print_array(array, size);
