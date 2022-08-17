@@ -14,7 +14,6 @@ void cocktail_sort_list(listint_t **list)
 
 	if (!list || !*list)
 		return;
-
 	while (swapped)
 	{
 		swapped = false;
@@ -24,9 +23,8 @@ void cocktail_sort_list(listint_t **list)
 			{
 				if (!pointer->prev)
 					*list = pointer->next;
-				swap_node(pointer, pointer->next);
+				swap_node(*list, pointer, pointer->next);
 				swapped = true;
-				print_list(*list);
 				continue;
 			}
 			pointer = pointer->next;
@@ -36,18 +34,18 @@ void cocktail_sort_list(listint_t **list)
 		pointer = pointer->prev;
 		while (pointer)
 		{
-			swapped = false;
 			if (pointer->n > pointer->next->n)
 			{
 				if (!pointer->prev)
 					*list = pointer->next;
-				swap_node(pointer, pointer->next);
+				swap_node(*list, pointer, pointer->next);
 				swapped = true;
-				print_list(*list);
 				pointer = pointer->prev;
 				if (!pointer->prev)
 					break;
 			}
+			if (!pointer->prev)
+				return;
 			pointer = pointer->prev;
 		}
 	}
@@ -72,9 +70,10 @@ void eject_node(listint_t *node)
  *
  *@node_1: The first node
  *@node_2: The second node
+ *@list: The doubly linked list being edited
  *Return: void
  */
-void swap_node(listint_t *node_1, listint_t *node_2)
+void swap_node(listint_t *list, listint_t *node_1, listint_t *node_2)
 {
 	eject_node(node_1);
 	if (node_2->next)
@@ -82,4 +81,5 @@ void swap_node(listint_t *node_1, listint_t *node_2)
 	node_1->next = node_2->next;
 	node_1->prev = node_2;
 	node_2->next = node_1;
+	print_list(list);
 }

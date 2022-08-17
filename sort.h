@@ -27,7 +27,7 @@ void eject_node(listint_t *node);
 void quickSort(int *array, size_t size, int lo, int hi);
 int partition(int *array, size_t size, int lo, int hi);
 void swap(int *array, size_t size, int i, int j);
-void swap_node(listint_t *node_1, listint_t *node_2);
+void swap_node(listint_t *list, listint_t *node_1, listint_t *node_2);
 void shell_sort(int *array, size_t size);
 size_t max_gap(size_t size);
 void cocktail_sort_list(listint_t **list);
